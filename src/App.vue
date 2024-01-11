@@ -1,6 +1,7 @@
 <template>
   <div>
     <Pregunta></Pregunta>
+    <!-- <Ejercicio></Ejercicio> -->
   </div>
 </template>
 

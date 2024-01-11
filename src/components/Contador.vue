@@ -13,11 +13,7 @@
     <p>{{ counter }} <sup>2</sup> = {{ operacionCuadradaComputada }}</p>
     <p>{{ counter }} <sup>2</sup> = {{ operacionCuadradaComputada }}</p>
     <p>{{ counter }} <sup>2</sup> = {{ operacionCuadradaComputada }}</p>-->
-    <p>
-      {{ counter }}
-      <sup>2</sup>
-      = {{ operacionCuadradaComputada }}
-    </p>
+    <p>{{ counter }}<sup>2</sup> = {{ operacionCuadradaComputada }}</p>
     <button @click="suma()">+1</button>
     <button @click="resta()">-1</button>
   </div>

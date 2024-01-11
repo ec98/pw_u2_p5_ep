@@ -1,15 +1,14 @@
 <template>
   <div>
-    <img
-      src="https://yesno.wtf/assets/yes/8-2f93962e2ab24427df8589131da01a4d.gif"
-      alt="No se puede visualizar la imagen"
-    />
+    <img v-if="img" v-bind:src="img" alt="No se puede visualizar la imagen" />
     <div class="dark"></div>
     <div class="container">
       <input v-model="pregunta" type="text" />
       <p>Recuerda que debes terminar con un signo de interogacion ('?')</p>
-      <h2>{{ pregunta }}</h2>
-      <h1>SI, NO...</h1>
+      <div v-if="preguntaValida === true">
+        <h2>{{ pregunta }}</h2>
+        <h1>{{ respuesta }}</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -18,27 +17,42 @@
 export default {
   data() {
     return {
-      pregunta: "put your question :)",
+      pregunta: null,
+      respuesta: null,
+      img: null,
+      preguntaValida: false
     };
   },
   methods: {
     async consumirAPI() {
-      //se guarda la respuesta de API de tal respuesta.
-    //   const data = await fetch("https://yesno.wtf/api").then((respuesta) =>
-    //     respuesta.json()
-    //   );
-      const {answer, image} = await  fetch("https://yesno.wtf/api").then((respuesta) =>
-        respuesta.json()
+      this.respuesta = "pensando.";
+      this.respuesta = "pensando..";
+ 
+      //   const data = await fetch("https://yesno.wtf/api").then((respuesta) =>
+      //     respuesta.json()
+      //   );
+      const { answer, image } = await fetch("https://yesno.wtf/api").then(r =>
+        r.json()
       );
-    //   console.log(data);
-        console.log(answer);
-        console.log(image);
 
+      //   console.log(data);
+      console.log(answer);
+      console.log(image);
+      this.respuesta = "pensando...";
+      this.respuesta = answer === "yes" ? "SI!" : "NO!";
+      // if(answer === "yes"){
+      //   this.respuesta = "Si";
+      // } else{
+      //   this.respuesta = "No";
+      // }
+      this.img = image;
       //depende de la funcionalidad de la api porque necesita esperar una respuesta de la peticion.
+      
     },
   },
   watch: {
     pregunta(value, oldValue) {
+      this.preguntaValida = false;
       // console.log(value);
       // console.log(oldValue);
       if (!value.includes("?")) {
@@ -46,8 +60,9 @@ export default {
       }
       //CONSUMO DEL API.
       this.consumirAPI();
-    },
-  },
+      this.preguntaValida = true;
+    }
+  }
 };
 </script>
 
