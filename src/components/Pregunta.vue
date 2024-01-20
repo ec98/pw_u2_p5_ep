@@ -20,18 +20,18 @@ export default {
       pregunta: null,
       respuesta: null,
       img: null,
-      preguntaValida: false
+      preguntaValida: false,
     };
   },
   methods: {
     async consumirAPI() {
       this.respuesta = "pensando.";
       this.respuesta = "pensando..";
- 
+
       //   const data = await fetch("https://yesno.wtf/api").then((respuesta) =>
       //     respuesta.json()
       //   );
-      const { answer, image } = await fetch("https://yesno.wtf/api").then(r =>
+      const { answer, image } = await fetch("https://yesno.wtf/api").then((r) =>
         r.json()
       );
 
@@ -47,7 +47,6 @@ export default {
       // }
       this.img = image;
       //depende de la funcionalidad de la api porque necesita esperar una respuesta de la peticion.
-      
     },
   },
   watch: {
@@ -61,8 +60,8 @@ export default {
       //CONSUMO DEL API.
       this.consumirAPI();
       this.preguntaValida = true;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -10,19 +10,19 @@ export default {
   props: {
     pokemonId: {
       type: Number,
-      required: true
+      required: true,
     },
     showPokemon: {
       type: Boolean,
       required: true,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     imagenFuente() {
       return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${this.pokemonId}.svg`;
-    }
-  }
+    },
+  },
 };
 </script>
 

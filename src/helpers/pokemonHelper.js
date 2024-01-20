@@ -4,7 +4,7 @@ const getIdPokemons = () => {
   const pokemons3 = numbersAleatorios(600);
   const pokemons4 = numbersAleatorios(600);
   const pokemonsArr = [pokemons1, pokemons2, pokemons3, pokemons4];
-//   console.log(pokemonsArr);
+  //   console.log(pokemonsArr);
   return pokemonsArr;
 };
 
@@ -32,15 +32,15 @@ const getNamesPokemons = async ([p1, p2, p3, p4]) => {
     nombre: nombre4,
   }
   const arreglo = [pk1, pk2, pk3, pk4];
-//   const arreglo = [nombre1, nombre2, nombre3, nombre4];
-  
+  //   const arreglo = [nombre1, nombre2, nombre3, nombre4];
+
   console.log(arreglo);
   return arreglo;
 };
 
 const getPokemons = async () => {
-    const arregloId = getIdPokemons();
-    return await getNamesPokemons(arregloId);
+  const arregloId = getIdPokemons();
+  return await getNamesPokemons(arregloId);
 }
 
 // async function consumirAPI(id){
